@@ -1,0 +1,79 @@
+body,
+html {
+  margin: 0 auto;
+  padding: 0;
+  background-image: url("img.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+body{
+  height: 100vh;
+}
+.flex-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column
+
+}
+
+.console {
+  display: none;
+  width: 30%;
+  justify-self:  center;
+  align-self: center
+}
+.console-top {
+  padding: 0;
+  background: white;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.02em 0.5em;
+}
+.close-button {
+  font-weight: bolder;
+  margin: 0;
+  width: 10%;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.close-button:hover {
+  background: red;
+  color: white;
+}
+.io {
+  background: black;
+  height: 20em;
+  color: #00bf00;
+  padding: 0.5em
+}
+#cursor {
+  animation: blink 0.75s infinite;
+  font-weight: bolder
+}
+@keyframes blink {
+  0% {
+    color: transparent;
+  }
+  50%{
+    color: #00bf00
+  }
+
+  100% {
+    color: transparent;
+  }
+}
+.icon{
+  margin: 1.5em;
+}
+.icon-img{
+  width: 4%;
+  height: 4%;
+  margin-bottom: 0;
+  
+}
+.icon-name{
+  margin: 0;
+  color: black;
+  font-weight: bold
+}
