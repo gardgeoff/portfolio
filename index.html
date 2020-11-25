@@ -14,18 +14,26 @@
 </head>
 
 <body>
+  <iframe src="https://www.google.com/" title="description"></iframe>
   <div class="container flex-container">
     <div class="icon command-prompt">
       <img class="icon-img" src="command-prompt-icon-11.jpg">
       <p class="icon-name">Console</p>
     </div>
+    <div class="icon help-file">
+      <img class="icon-img" src="text-file.png">
+      <p class="icon-name">Help.txt</p>
+    </div>
 
     <div class="draggable console">
       <div class="console-top">
+       
+        <p class="console-title">Console</p>
         <p class="close-button">X</p>
 
       </div>
       <div class="io non-draggable">
+        <div class="text-output"></div>
         <span class="text-input"></span><span id="cursor">_</span>
       </div>
 

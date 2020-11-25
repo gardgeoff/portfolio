@@ -14,46 +14,41 @@ $(document).ready(() => {
       console.log(stateMachine.currentWindow);
     }
   });
-  $(".command-prompt").dblclick(()=> {
-    $(".console").fadeIn("fast")
+  $(".command-prompt").dblclick(() => {
+    $(".console").fadeIn("fast");
     stateMachine.currentWindow = "console";
-  })
+  });
   $(".close-button").on("click", () => {
     $(".console").fadeOut("fast");
     $(".text-input").empty();
     stateMachine.currentWindow = "none";
-  })
+  });
+  $(".console").resizable();
   $(document).on("keydown", (e) => {
-    console.log(`Keycode : ${e.keyCode} Key: ${e.key}`)
- 
+    console.log(`Keycode : ${e.keyCode} Key: ${e.key}`);
+
     let currentCommand = $(".text-input").text();
     if (stateMachine.currentWindow == "console") {
       if (e.keyCode == 8) {
-        let newString = currentCommand.slice(0, -1);
-      
-        $(".text-input").text(newString);
-        textCounter--;
+        $(".text-input").text((_, txt) => {
+          return txt.slice(0, -1);
+
+        })
       }
       if (e.keyCode == 13) {
-        if (currentCommand == "help"){
-    
-        $(".text-input").append("<br />List of Commands: <br /> Hello <br/>")
+        if (currentCommand == "help") {
+          $(".text-output").append(`${currentCommand} <br />List of Commands: <br /> Hello <br/>`);
+          $(".text-input").empty()
+          $('.io').stop().animate({
+            scrollTop: $('.io')[0].scrollHeight
+          }, 800);
         }
-        
-
       }
       if ((e.keyCode >= 48 && e.keyCode <= 90) || e.keyCode == 32) {
-        if (textCounter > 75) {
-          console.log("called");
-          $(".text-input").append("<br />");
-          textCounter = 0;
-        }
-
-        $(".text-input").append(e.key);
-        textCounter++;
+ 
+          $(".text-input").append(e.key);
+        
       }
-
-
     }
   });
 });

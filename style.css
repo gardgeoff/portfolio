@@ -6,6 +6,7 @@ html {
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
   height: 100vh;
@@ -23,19 +24,27 @@ body{
   justify-self:  center;
   align-self: center
 }
+.console-title{
+  margin: 0;
+ 
+  font-size: 1.1rem;
+
+}
+
 .console-top {
   padding: 0;
   background: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0.02em 0.5em;
 }
 .close-button {
-  font-weight: bolder;
+ 
   margin: 0;
   width: 10%;
   font-size: 1.2rem;
   text-align: center;
+  align-self: center;
 }
 .close-button:hover {
   background: red;
@@ -45,11 +54,12 @@ body{
   background: black;
   height: 20em;
   color: #00bf00;
-  padding: 0.5em
+  padding: 0.5em;
+  overflow: scroll
 }
 #cursor {
   animation: blink 0.75s infinite;
-  font-weight: bolder
+ 
 }
 @keyframes blink {
   0% {
@@ -75,5 +85,15 @@ body{
 .icon-name{
   margin: 0;
   color: black;
-  font-weight: bold
+ 
+}
+span{
+  word-wrap: normal;
+}
+.io::-webkit-scrollbar {
+  display:none
+}
+.io{
+  -ms-overflow-style:none;
+  scrollbar-width: none;
 }
