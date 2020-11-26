@@ -11,6 +11,9 @@ html {
 body{
   height: 100vh;
 }
+p{
+  margin: 0;
+}
 .flex-container {
   width: 100%;
   display: flex;
@@ -22,21 +25,39 @@ body{
   display: none;
   width: 30%;
   justify-self:  center;
-  align-self: center
+  align-self: center;
+  position: absolute;
+  z-index: 0;
 }
-.console-title{
+.text-file{
+  width: 30%;
+  justify-self: center;
+  align-self: center;
+  position: absolute;
+  top: 25%;
+  z-index: 1;
+  border: 1px solid black;
+  display:none;
+}
+.application-title{
   margin: 0;
  
-  font-size: 1.1rem;
-
+  font-size: 0.9rem;
 }
 
-.console-top {
+.application-top {
   padding: 0;
   background: white;
   display: flex;
   justify-content: space-between;
   padding: 0.02em 0.5em;
+}
+.help-title{
+  font-size: 1.0rem;
+  border-bottom: 1px solid rgb(167, 167, 167);
+  padding-bottom: 0.4em;
+  padding-top: 0.1em;
+ 
 }
 .close-button {
  
@@ -50,12 +71,21 @@ body{
   background: red;
   color: white;
 }
-.io {
+.io{
   background: black;
   height: 20em;
   color: #00bf00;
   padding: 0.5em;
-  overflow: scroll
+  overflow: scroll;
+  word-break: break-all;
+}
+.text-body{
+  padding: 0.5em;
+  margin: 0;
+  background: white;
+  height: 25em;
+  word-break: break-all;
+  overflow-y: scroll; 
 }
 #cursor {
   animation: blink 0.75s infinite;

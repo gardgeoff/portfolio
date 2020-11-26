@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <link rel="stylesheet" href="./jquery-ui-1.12.1.custom/jquery-ui.min.css" />
+    <script src="./jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="./jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="./logic.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./jquery-ui-1.12.1.custom/jquery-ui.min.css">
-  <script src="./jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
-  <script src="./jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-  <script src="./logic.js"></script>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-
-<body>
-  <iframe src="https://www.google.com/" title="description"></iframe>
-  <div class="container flex-container">
-    <div class="icon command-prompt">
-      <img class="icon-img" src="command-prompt-icon-11.jpg">
-      <p class="icon-name">Console</p>
-    </div>
-    <div class="icon help-file">
-      <img class="icon-img" src="text-file.png">
-      <p class="icon-name">Help.txt</p>
-    </div>
-
-    <div class="draggable console">
-      <div class="console-top">
-       
-        <p class="console-title">Console</p>
-        <p class="close-button">X</p>
-
+  <body>
+    <div class="container flex-container">
+      <div class="icon console-icon">
+        <img class="icon-img" src="command-prompt-icon-11.jpg" />
+        <p class="icon-name">Console</p>
       </div>
-      <div class="io non-draggable">
-        <div class="text-output"></div>
-        <span class="text-input"></span><span id="cursor">_</span>
+      <div class="icon help-icon">
+        <img class="icon-img" src="text-file.png" />
+        <p class="icon-name">Help.txt</p>
       </div>
 
+      <div class="draggable console">
+        <div class="application-top">
+          <p class="application-title">Console</p>
+          <p app-type="console" class="close-button">X</p>
+        </div>
+        <div class="io non-draggable">
+          <div>geoffsoft [Version 1.02.1883.1990] <br />(g) 2020 geoffsoft corporation. No rights reserved <br /> <br /><span class="text-output"></span></div>
+          <span>C:\Users\Geoff></span><span class="text-input"></span><span id="cursor">_</span>
+        </div>
+      </div>
+      <div class="draggable text-file">
+        <div class= "help-title application-top">
+          <p class="application-title">Help - Notepad</p>
+          <p app-type="text-file" class="close-button">X</p>
+          
+        </div>
+        <div class="text-body non-draggable">
+          
+        </div> 
+      </div>
     </div>
-  </div>
-
-</body>
-
+  </body>
 </html>
