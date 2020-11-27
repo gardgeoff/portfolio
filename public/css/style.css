@@ -2,7 +2,7 @@ body,
 html {
   margin: 0 auto;
   padding: 0;
-  background-image: url("img.jpg");
+  background-image: url("../images/img.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -31,8 +31,6 @@ p{
 }
 .text-file{
   width: 30%;
-  justify-self: center;
-  align-self: center;
   position: absolute;
   top: 25%;
   z-index: 1;
@@ -105,17 +103,20 @@ p{
 }
 .icon{
   margin: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .icon-img{
-  width: 4%;
-  height: 4%;
+  width: 50px;
+  height: 50px;
   margin-bottom: 0;
   
 }
 .icon-name{
-  margin: 0;
-  color: black;
  
+  color: black;
+
 }
 span{
   word-wrap: normal;
