@@ -29,6 +29,9 @@ p{
   position: absolute;
   z-index: 0;
 }
+video{
+  width: 30%;
+}
 .text-file{
   width: 30%;
   position: absolute;
@@ -75,7 +78,7 @@ p{
   color: #00bf00;
   padding: 0.5em;
   overflow: scroll;
-  word-break: break-all;
+  word-break: break-all ;
 }
 .text-body{
   padding: 0.5em;

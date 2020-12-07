@@ -1,37 +1,25 @@
+import typeWriter from "./helpers.js"
 $(document).ready(() => {
+ 
   //state machine for handling which files are considered active
   //also stores the most recent command from the console
   let stateMachine = {
     currentWindow: "none",
     currentCommand: "",
   };
+  
   //global variable declarations
   let help = "output: this is the response for the help input";
   let projectsList = `output: List of Projects:<br /> ecobourne <br /> trivia battler <br /> hellcrawl `;
   let errorMsg = `output: error - not recognized as internal or external command`;
-  let commandList = ["help", "list projects"];
+  let bootEco = `starting ecobourne...`
+  let ecoOne = "<br /> Ecobourne is an animal life cycle simulation that puts a variety of animals in a digital environment to see how they develop and ineract with each other."
+  let commandList = ["help", "list projects", "start ecobourne"];
   let windows = ["console", "text-file"];
-  let charIndex = 0;
+  
   let zIndexCounter = 1;
 
   //function to create console typewriter effect
-  function typeWriter(string, speed) {
-    if (charIndex < string.length) {
-      if (string.charAt(charIndex) == "<") {
-        //makes sure to parse and line break at <br />
-        $(".text-output").append("<br />");
-        charIndex += 6;
-      }
-      $(".text-output").append(string.charAt(charIndex));
-      charIndex++;
-
-      setTimeout(function () {
-        typeWriter(string, speed);
-      }, speed);
-    } else {
-      charIndex = 0;
-    }
-  }
 
   //function that tests the input string to see if it is a valid command
   function testString(string) {
@@ -45,6 +33,11 @@ $(document).ready(() => {
         case "list projects":
           typeWriter(projectsList, 0, 100);
           break;
+        case "start ecobourne":
+          typeWriter(bootEco, 0, 100);
+          setTimeout(function() {
+            typeWriter(ecoOne, 0, 100)
+          }, 1000)
       }
 
       // $(".text-output").empty();
@@ -117,7 +110,7 @@ $(document).ready(() => {
       if (e.keyCode == 13) {
         testString(currentCommand);
       }
-      //check for only alphabet keypresses
+      //check for only alphabet keypressesh
       if ((e.keyCode >= 48 && e.keyCode <= 90) || e.keyCode == 32) {
         $(".text-input").append(e.key);
       }
