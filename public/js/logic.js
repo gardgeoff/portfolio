@@ -9,17 +9,26 @@ $(document).ready(() => {
   };
   
   //global variable declarations
-  let help = "output: this is the response for the help input";
-  let projectsList = `output: List of Projects:<br /> ecobourne <br /> trivia battler <br /> hellcrawl `;
-  let errorMsg = `output: error - not recognized as internal or external command`;
+  let help = "> Command list: <br /> help <br /> list projects <br /> start [project-name], clear;
+  let projectsList = `> List of Projects:<br /> ecobourne <br /> trivia battler <br /> hellcrawl `;
+  let errorMsg = `> error - not recognized as internal or external command`;
   let bootEco = `starting ecobourne...`
   let ecoOne = "<br /> Ecobourne is an animal life cycle simulation that puts a variety of animals in a digital environment to see how they develop and ineract with each other."
-  let commandList = ["help", "list projects", "start ecobourne"];
+  let commandList = ["help", "list projects", "start ecobourne", "clear"];
   let windows = ["console", "text-file"];
   
   let zIndexCounter = 1;
 
-  //function to create console typewriter effect
+  function jumpToBottom() {
+    $(".io")
+      .stop()
+      .animate(
+        {
+          scrollTop: $(".io")[0].scrollHeight,
+        },
+        800
+      );
+  }
 
   //function that tests the input string to see if it is a valid command
   function testString(string) {
@@ -38,6 +47,11 @@ $(document).ready(() => {
           setTimeout(function() {
             typeWriter(ecoOne, 0, 100)
           }, 1000)
+        break;
+        case "clear":
+          $(".text-output").empty();
+
+
       }
 
       // $(".text-output").empty();
@@ -47,14 +61,7 @@ $(document).ready(() => {
     }
     $(".text-input").empty();
     //auto scroll the console chatbox as you type
-    $(".io")
-      .stop()
-      .animate(
-        {
-          scrollTop: $(".io")[0].scrollHeight,
-        },
-        800
-      );
+    jumpToBottom();
   }
   //setting up application window functionlity
   //each window is draggable and can be closed which updates the state
@@ -109,6 +116,7 @@ $(document).ready(() => {
       //check for enter key and run test function 
       if (e.keyCode == 13) {
         testString(currentCommand);
+        jumpToBottom();
       }
       //check for only alphabet keypressesh
       if ((e.keyCode >= 48 && e.keyCode <= 90) || e.keyCode == 32) {

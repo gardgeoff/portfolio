@@ -78,7 +78,8 @@ video{
   color: #00bf00;
   padding: 0.5em;
   overflow: scroll;
-  word-break: break-all ;
+  /* word-break: break-all; */
+  word-wrap: break-word;
 }
 .text-body{
   padding: 0.5em;
@@ -130,4 +131,7 @@ span{
 .io{
   -ms-overflow-style:none;
   scrollbar-width: none;
+}
+.help-focus{
+  color: #B00085;
 }
