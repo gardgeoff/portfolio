@@ -2,15 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
     <link
       rel="stylesheet"
       href="./js/jquery-ui-1.12.1.custom/jquery-ui.min.css"
     />
     <script src="./js/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
     <script src="./js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="./js/jquery-ui-touchpunch.js"></script>
+
     <script type="module" src="./js/logic.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
@@ -49,7 +53,19 @@
           <p class="application-title">Help - Notepad</p>
           <p app-type="text-file" class="close-button">X</p>
         </div>
-        <div class="text-body non-draggable"></div>
+        <div class="text-body non-draggable">
+          <p>
+            <strong>To whoever finds themselves here</strong>
+            <br/>
+            Welcome to Geoffrey Gard's online portfolio. In order to get the full effect of the website it is best to be viewed on a non-mobile deivice.
+            <br /> <br />
+            If you need some help on where to get started try opening the developer console on the desktop and type in the word "help". all commands can be executed by hitting the return key just like in your normal terminal.
+            <br /> <br />
+            I hope you find this website fun, easy to use, and interesting and I appreciate you taking time to look through it.
+            Thank you and good luck!
+
+          </p>
+        </div>
       </div>
     </div>
   </body>
