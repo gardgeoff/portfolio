@@ -1,4 +1,4 @@
-import typeWriter from "./helpers.js";
+
 $(document).ready(() => {
   //state machine for handling which files are considered active
   //also stores the most recent command from the console
@@ -10,16 +10,16 @@ $(document).ready(() => {
 
   //global variable declarations
   let help =
-    "> Command list:  * help  * list projects  * start [project-name]  * clear";
-  let projectsList = `> List of Projects:  *  ecobourne   *  trivia battler   *  hellcrawl `;
+    "> command list:  * help  * list projects  * start [project-name]  * clear";
+  let projectsList = `> list of Projects:  *  ecobourne   *  trivia battler   *  hellcrawl `;
   let errorMsg = `> error - not recognized as internal or external command`;
   let noProj = `> error - no project currently selected`;
   let bootEco = `> starting ecobourne...`;
   let newTab = `> opening in new tab...`;
   let ecoDesc =
-    " * > Ecobourne is an animal life cycle simulation that puts a variety of animals in a digital environment to see how they develop and ineract with each other.  * Additional Options:  * > show video eco  * > github   * > exit";
+    " * > ecobourne is an animal life cycle simulation that puts a variety of animals in a digital environment to see how they develop and ineract with each other.  * Additional Options:  * > show video eco  * > github   * > exit";
   let hCDesc =
-    " * > Hellcrawl is an html5 game built on the canvas element to render everything. * The game had a simple setup for account creation which was set up with a MySql using sequelize as the ORM on the backend. The graphics were animated sprites that could be controlled by the user. * > Additional Options:  * > show video hellcrawl * > github *> exit";
+    " * > hellcrawl is an html5 game built on the canvas element to render everything. * The game had a simple setup for account creation which was set up with a MySql using sequelize as the ORM on the backend. The graphics were animated sprites that could be controlled by the user. * > Additional Options:  * > show video hellcrawl * > github *> exit";
   let triviaDesc =
     "  *  > the trivia game was my first full project in which two users could battle each other in a trivia game. In order to create a seperate session for each user local storage kept track of which player was which. The game then offered them a choice of category supplied by an existing trivia api that would pull varying amounts of questions based on what one player selected. Once both players had loaded in the game proceeded to test their knowledge, and congradulated the winner at the end with a gif from the giphy api.  *> Additional Options:  *> show video trivia   *> github  *> exit";
   let commandList = [
@@ -36,6 +36,34 @@ $(document).ready(() => {
 
   let zIndexCounter = 1;
 
+  let charIndex = 0;
+
+
+
+function typeWriter(string, speed) {
+      if (charIndex < string.length) {
+        if (string.charAt(charIndex) == '*' ) {
+          
+          //makes sure to parse and line break at <br />
+          $(".text-output").append("<br />");
+          charIndex++;
+         
+        }
+        jumpToBottom();
+        $(".text-output").append(string.charAt(charIndex));
+        charIndex++;
+  
+        setTimeout(function () {
+          typeWriter(string, speed);
+        }, speed);
+      } else {
+       
+      
+        charIndex = 0;
+      }
+    }
+    
+  
   function jumpToBottom() {
     $(".io")
       .stop()
@@ -46,6 +74,8 @@ $(document).ready(() => {
         800
       );
   }
+  let homeDir = "C:\\Users\\Geoff"
+  let addedDir =">"
 
   //function that tests the input string to see if it is a valid command
   function testString(string) {
@@ -61,7 +91,7 @@ $(document).ready(() => {
       }
       if (string == "start ecobourne") {
         typeWriter(bootEco, 0, 100);
-
+        addedDir ="\\ecobourne>"
         setTimeout(function () {
           stateMachine.currentProject = "eco";
           typeWriter(ecoDesc, 0, 100);
@@ -69,6 +99,7 @@ $(document).ready(() => {
       }
       if (string == "start hellcrawl") {
         typeWriter(`> starting hellcrawl...`, 0, 100);
+        addedDir = "\\hellcrawl>"
         setTimeout(function () {
           stateMachine.currentProject = "hellcrawl";
           typeWriter(hCDesc, 0, 100);
@@ -76,14 +107,23 @@ $(document).ready(() => {
       }
       if (string == "start trivia") {
         typeWriter(`> starting trivia game...`, 0, 100);
+        addedDir = "\\trivia>"
         setTimeout(function () {
           stateMachine.currentProject = "trivia";
           typeWriter(triviaDesc, 0, 100);
         }, 1000);
       }
       if (string == "clear") {
+        
         $(".text-output").empty();
       }
+      
+      if (string === "exit" && stateMachine.currentProject) {
+        stateMachine.currentProject = null;
+        addedDir = ">"
+        $(".text-output").empty();
+      }
+      $(".dir").html(homeDir + addedDir)
       if (string === "github") {
         if (stateMachine.currentProject) {
           typeWriter(newTab, 0, 100)
@@ -103,10 +143,6 @@ $(document).ready(() => {
         }
       }
 
-      if (string === "exit" && stateMachine.currentProject) {
-        stateMachine.currentProject = null;
-        $(".text-output").empty();
-      }
       // $(".text-output").empty();
     } else {
       //display an error message if not a valid command
