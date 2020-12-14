@@ -1,72 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
-    <title>Document</title>
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
-    <link
-      rel="stylesheet"
-      href="./js/jquery-ui-1.12.1.custom/jquery-ui.min.css"
-    />
-    <script src="./js/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
-    <script src="./js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <script src="./js/jquery-ui-touchpunch.js"></script>
+  <title>Document</title>
+  <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
-    <script type="module" src="./js/logic.js"></script>
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
+  <link rel="stylesheet" href="./js/jquery-ui-1.12.1.custom/jquery-ui.min.css" />
+  <script src="./js/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+  <script src="./js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <script src="./js/jquery-ui-touchpunch.js"></script>
 
-  <body>
-    <div class="container flex-container">
-      <!-- <video controls loop>
-        <source src="./images/show-map.mp4" type="video/mp4" />
-      </video> -->
-      <div class="icon console-icon">
-        <img class="icon-img" src="./images/command-prompt-icon-11.jpg" />
-        <p class="icon-name">Console</p>
-      </div>
-      <div class="icon help-icon">
-        <img class="icon-img" src="./images/text-file.png" />
-        <p class="icon-name">Help.txt</p>
+  <script type="module" src="./js/logic.js"></script>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+
+
+  <div class="container flex-container">
+    <div class="draggable video-player">
+      <div class="video-player-title application-top">
+        <p class="application-title"><span class="videoName"><i class="fas fa-play"></i>
+            ecobourne</span> - GGG Media Player</p>
+        <p app-type="video-player" class="close-button">X</p>
       </div>
 
-      <div class="draggable console">
-        <div class="application-top">
-          <p class="application-title">Console</p>
-          <p app-type="console" class="close-button">X</p>
-        </div>
-        <div class="io non-draggable">
-          <div>
-            geoffsoft [Version 1.02.1883.1990] <br />(g) 2020 geoffsoft
-            corporation. No rights reserved <br /> <br /> Do you need some <span class="help-focus">help?</span>
-            <br /><span class="text-output"></span>
-          </div>
-          <span class="dir">C:\Users\Geoff></span><span class="text-input"></span
-          ><span id="cursor">_</span>
-        </div>
-      </div>
-      <div class="draggable text-file">
-        <div class="help-title application-top">
-          <p class="application-title">Help - Notepad</p>
-          <p app-type="text-file" class="close-button">X</p>
-        </div>
-        <div class="text-body non-draggable">
-          <p>
-            <strong>To whoever finds themselves here</strong>
-            <br/>
-            Welcome to Geoffrey Gard's online portfolio. In order to get the full effect of the website it is best to be viewed on a non-mobile deivice.
-            <br /> <br />
-            If you need some help on where to get started try opening the developer console on the desktop and type in the word "help". all commands can be executed by hitting the return key just like in your normal terminal.
-            <br /> <br />
-            I hope you find this website fun, easy to use, and interesting and I appreciate you taking time to look through it.
-            Thank you and good luck!
+      <video id='ecobourne' class='video-js' controls preload='auto' width='640' height='500' data-setup='{}'>
+        <source src="./images/ecobourne.mp4" />
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a
+          web browser that
+          <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+      </video>
+    </div>
+    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
 
-          </p>
+    <div class="icon console-icon">
+      <img class="icon-img" src="./images/command-prompt-icon-11.jpg" />
+      <p class="icon-name">Console</p>
+    </div>
+    <div class="icon help-icon">
+      <img class="icon-img" src="./images/text-file.png" />
+      <p class="icon-name">Help.txt</p>
+    </div>
+
+    <div class="draggable console">
+      <div class="application-top">
+        <p class="application-title">Console</p>
+        <p app-type="console" class="close-button">X</p>
+      </div>
+      <div class="io non-draggable">
+        <div>
+          geoffsoft [Version 1.02.1883.1990] <br />(g) 2020 geoffsoft
+          corporation. No rights reserved <br /> <br /> Do you need some <span class="help-focus">help?</span>
+          <br /><span class="text-output"></span>
         </div>
+        <span class="dir">C:\Users\Geoff></span><span class="text-input"></span><span id="cursor">_</span>
       </div>
     </div>
-  </body>
+    <div class="draggable text-file">
+      <div class="help-title application-top">
+        <p class="application-title">Help - Notepad</p>
+        <p app-type="text-file" class="close-button">X</p>
+      </div>
+      <div class="text-body non-draggable">
+        <p>
+          <strong>To whoever finds themselves here</strong>
+          <br />
+          Welcome to Geoffrey Gard's online portfolio. In order to get the full effect of the website it is best to be
+          viewed on a non-mobile deivice.
+          <br /> <br />
+          If you need some help on where to get started try opening the developer console on the desktop and type in the
+          word "help". all commands can be executed by hitting the return key just like in your normal terminal.
+          <br /> <br />
+          I hope you find this website fun, easy to use, and interesting and I appreciate you taking time to look
+          through it.
+          Thank you and good luck!
+
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
