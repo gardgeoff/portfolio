@@ -8,7 +8,8 @@ $(document).ready(() => {
   };
 
   let video = document.getElementById("vid");
-
+  let vidSrc = document.getElementById("vidsrc")
+  
   //global variable declarations
   let help =
     "> command list:  * help  * list projects  * start [project-name]  * clear";
@@ -39,7 +40,20 @@ $(document).ready(() => {
   let windows = ["console", "text-file"];
   let zIndexCounter = 1;
   let charIndex = 0;
+  function startVideo(projectUrl) {
+    video.src = projectUrl;
+    $(".video-player").fadeIn();
+    zIndexCounter++;
+    $(".video-player").css("zindex", zIndexCounter);
+    let videoplayer = document.getElementById("vid");
+    video.requestFullscreen();
+    videoplayer.play();
+    video.addEventListener("ended", myHandler, false);
 
+    function myHandler(e) {
+      $(".video-player").fadeOut("fast");
+    }
+  }
   function typeWriter(string, speed) {
     if (charIndex < string.length) {
       if (string.charAt(charIndex) == "*") {
@@ -115,30 +129,25 @@ $(document).ready(() => {
         $(".text-output").empty();
       }
       $(".dir").html(homeDir + addedDir);
-
       // $(".text-output").empty();
       if (stateMachine.currentProject) {
         if (stateMachine.currentProject == "eco") {
           if (string === "github") {
             window.open("https://github.com/gardgeoff95/ecobourne-game-client");
           } else if (string === "show video eco") {
-            $(".video-player").fadeIn();
-            zIndexCounter++;
-            $(".video-player").css("zindex", zIndexCounter);
-            let videoplayer = document.getElementById("vid");
-            video.requestFullscreen();
-            videoplayer.play();
-            video.addEventListener("ended", myHandler, false);
-
-            function myHandler(e) {
-              $(".video-player").fadeOut("fast");
-            }
+            startVideo("../images/ecobourne.mp4")
+          
           }
-        } else if (stateMachine.currentProject == "hellcrawl") {
+        } 
+        if (stateMachine.currentProject == "hellcrawl") {
+          alert('hey')
+
           if (string === "github") {
             window.open("https://github.com/aznchronos/Project-2");
-          } else if (string === " show video hellcrawl") {
-            
+          } else if (string === "show video hellcrawl") {
+           
+            startVideo("../images/hc.mp4");
+
           }
         } else if (stateMachine.currentProject == "trivia") {
           window.open("https://github.com/gardgeoff95/project-1");
