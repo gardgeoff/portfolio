@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
   <title>Document</title>
-  <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
     integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
@@ -14,6 +14,8 @@
   <script src="./js/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
   <script src="./js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
   <script src="./js/jquery-ui-touchpunch.js"></script>
+
+
 
   <script type="module" src="./js/logic.js"></script>
   <link rel="stylesheet" href="./css/style.css" />
@@ -30,16 +32,13 @@
         <p app-type="video-player" class="close-button">X</p>
       </div>
 
-      <video id='ecobourne' class='video-js' controls preload='auto' width='640' height='500' data-setup='{}'>
-        <source src="./images/ecobourne.mp4" />
-        <p class="vjs-no-js">
-          To view this video please enable JavaScript, and consider upgrading to a
-          web browser that
-          <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-        </p>
-      </video>
+    <video id="vid" class="video-js" controls width="100%">
+    
+      <source src="./images/ecobourne.mp4" type="video/webm">
+    
+      Sorry, your browser doesn't support embedded videos.
+    </video>
     </div>
-    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
 
     <div class="icon console-icon">
       <img class="icon-img" src="./images/command-prompt-icon-11.jpg" />

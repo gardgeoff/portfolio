@@ -1,4 +1,3 @@
-
 $(document).ready(() => {
   //state machine for handling which files are considered active
   //also stores the most recent command from the console
@@ -7,6 +6,8 @@ $(document).ready(() => {
     currentCommand: "",
     currentProject: null,
   };
+
+  let video = document.getElementById("vid");
 
   //global variable declarations
   let help =
@@ -31,39 +32,33 @@ $(document).ready(() => {
     "clear",
     "github",
     "exit",
+    "show video eco",
+    "show video hellcrawl",
+    "show video trivia",
   ];
   let windows = ["console", "text-file"];
-
   let zIndexCounter = 1;
-
   let charIndex = 0;
 
-
-
-function typeWriter(string, speed) {
-      if (charIndex < string.length) {
-        if (string.charAt(charIndex) == '*' ) {
-          
-          //makes sure to parse and line break at <br />
-          $(".text-output").append("<br />");
-          charIndex++;
-         
-        }
-        jumpToBottom();
-        $(".text-output").append(string.charAt(charIndex));
+  function typeWriter(string, speed) {
+    if (charIndex < string.length) {
+      if (string.charAt(charIndex) == "*") {
+        //makes sure to parse and line break at <br />
+        $(".text-output").append("<br />");
         charIndex++;
-  
-        setTimeout(function () {
-          typeWriter(string, speed);
-        }, speed);
-      } else {
-       
-      
-        charIndex = 0;
       }
+      jumpToBottom();
+      $(".text-output").append(string.charAt(charIndex));
+      charIndex++;
+
+      setTimeout(function () {
+        typeWriter(string, speed);
+      }, speed);
+    } else {
+      charIndex = 0;
     }
-    
-  
+  }
+
   function jumpToBottom() {
     $(".io")
       .stop()
@@ -74,8 +69,8 @@ function typeWriter(string, speed) {
         800
       );
   }
-  let homeDir = "C:\\Users\\Geoff"
-  let addedDir =">"
+  let homeDir = "C:\\Users\\Geoff";
+  let addedDir = ">";
 
   //function that tests the input string to see if it is a valid command
   function testString(string) {
@@ -91,7 +86,7 @@ function typeWriter(string, speed) {
       }
       if (string == "start ecobourne") {
         typeWriter(bootEco, 0, 100);
-        addedDir ="\\ecobourne>"
+        addedDir = "\\ecobourne>";
         setTimeout(function () {
           stateMachine.currentProject = "eco";
           typeWriter(ecoDesc, 0, 100);
@@ -99,7 +94,7 @@ function typeWriter(string, speed) {
       }
       if (string == "start hellcrawl") {
         typeWriter(`> starting hellcrawl...`, 0, 100);
-        addedDir = "\\hellcrawl>"
+        addedDir = "\\hellcrawl>";
         setTimeout(function () {
           stateMachine.currentProject = "hellcrawl";
           typeWriter(hCDesc, 0, 100);
@@ -107,45 +102,49 @@ function typeWriter(string, speed) {
       }
       if (string == "start trivia") {
         typeWriter(`> starting trivia game...`, 0, 100);
-        addedDir = "\\trivia>"
+        addedDir = "\\trivia>";
         setTimeout(function () {
           stateMachine.currentProject = "trivia";
           typeWriter(triviaDesc, 0, 100);
         }, 1000);
       }
-      if (string == "clear") {
-        
-        $(".text-output").empty();
-      }
-      
+
       if (string === "exit" && stateMachine.currentProject) {
         stateMachine.currentProject = null;
-        addedDir = ">"
+        addedDir = ">";
         $(".text-output").empty();
       }
-      $(".dir").html(homeDir + addedDir)
-      if (string === "github") {
-        if (stateMachine.currentProject) {
-          typeWriter(newTab, 0, 100)
-          setTimeout(function() {
-            if (stateMachine.currentProject == "eco") {
-              window.open("https://github.com/gardgeoff95/ecobourne-game-client");
-            } else if (stateMachine.currentProject == "hellcrawl") {
-              window.open("https://github.com/aznchronos/Project-2");
-            } else if (stateMachine.currentProject == "trivia") {
-              window.open("https://github.com/gardgeoff95/project-1");
-            }
-
-          }, 1000)
-      
-        } else if (!stateMachine.currentProject) {
-          typeWriter(noProj, 0, 100)
-        }
-      }
+      $(".dir").html(homeDir + addedDir);
 
       // $(".text-output").empty();
+      if (stateMachine.currentProject) {
+        if (stateMachine.currentProject == "eco") {
+          if (string === "github") {
+            window.open("https://github.com/gardgeoff95/ecobourne-game-client");
+          } else if (string === "show video eco") {
+            $(".video-player").fadeIn();
+            zIndexCounter++;
+            $(".video-player").css("zindex", zIndexCounter);
+            let videoplayer = document.getElementById("vid");
+            video.requestFullscreen();
+            videoplayer.play();
+            video.addEventListener("ended", myHandler, false);
+
+            function myHandler(e) {
+              $(".video-player").fadeOut("fast");
+            }
+          }
+        } else if (stateMachine.currentProject == "hellcrawl") {
+          if (string === "github") {
+            window.open("https://github.com/aznchronos/Project-2");
+          } else if (string === " show video hellcrawl") {
+            
+          }
+        } else if (stateMachine.currentProject == "trivia") {
+          window.open("https://github.com/gardgeoff95/project-1");
+        }
+      }
     } else {
-      //display an error message if not a valid command
       typeWriter(errorMsg, 0, 100);
     }
     $(".text-input").empty();
@@ -168,6 +167,10 @@ function typeWriter(string, speed) {
       stateMachine.currentWindow = "text-file";
       $(".text-file").css("z-index", zIndexCounter);
       zIndexCounter++;
+    } else if ($(this).hasClass("video-player")) {
+      stateMachine.currentWindow = "video-player";
+      $(".video-player").css("z-index", zIndexCounter);
+      zIndexCounter++;
     }
   });
   $(".icon").dblclick(function () {
@@ -188,6 +191,10 @@ function typeWriter(string, speed) {
       $(".text-output").empty();
     } else if (appType == "text-file") {
       $(".text-file").fadeOut("fast");
+    } else if (appType == "video-player") {
+      $(".video-player").fadeOut("fast");
+      video.pause();
+      video.currentTime = 0;
     }
     stateMachine.currentWindow = "none";
   });
