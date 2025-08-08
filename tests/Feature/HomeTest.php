@@ -1,7 +1,9 @@
 <?php
 
-test('example', function () {
-    $response = $this->get('/');
-    $this->get();
-    $response->assertStatus(200);
+use App\Livewire\Home;
+use Livewire\Livewire;
+
+test('can access home page component', function () {
+    Livewire::test(Home::class)
+        ->assertStatus(200);
 });
