@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('directories', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
         });

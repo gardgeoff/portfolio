@@ -36,4 +36,9 @@ class Directory extends Model
             'directories' => $this->directories,
         ];
     }
+
+    public function scopeRoot($query)
+    {
+        return $query->whereNull('parent_id');
+    }
 }
